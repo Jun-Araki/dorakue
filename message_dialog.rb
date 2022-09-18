@@ -16,14 +16,14 @@ module MessageDialog
     EOS
   end
 
-  def end_message
-    #   if battle_win?
-    #     puts "#{@brave.name}はたたかいに勝った"
-    #     puts "#{result[:exp]}の経験値と#{result[:gold]}ゴールドを獲得した"
-    #   else
-    #     puts "#{@brave.name}はたたかいに負けた"
-    #     puts "目の前が真っ暗になった"
-    #   end
+  def end_message(result)# rubocop:disable all
+    if result[:brave_win_flag]
+      puts "#{@brave.name}はたたかいに勝った"
+      puts "#{result[:exp]}の経験値と#{result[:gold]}ゴールドを獲得した"
+    else
+      puts "#{@brave.name}はたたかいに負けた"
+      puts "目の前が真っ暗になった"
+    end
   end
 
   def transform_message
