@@ -26,6 +26,7 @@ class Monster < Character
     cause_damage(target: brave, damage:)
 
     attack_message
+    damage_message(target: brave, damage:)
   end
 
   private
@@ -41,17 +42,10 @@ class Monster < Character
     target.hp -= damage
 
     target.hp = 0 if target.hp < 0
-
-    # puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
   def transform
     transform_name = "洞窟マムル"
-
-    # puts <<~EOS
-    #   #{@name}は怒っている
-    #   #{@name}は#{transform_name}に変身した
-    # EOS
 
     @offense *= POWER_UP_RATE
     @name = transform_name
