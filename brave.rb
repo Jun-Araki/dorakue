@@ -2,13 +2,11 @@ class Brave < Character
   SPECIAL_ATTACK_CONSTANT = 1.5
 
   def attack(monster)
-    puts "#{@name}の攻撃"
-
     attack_type = decision_attack_type
     damage = calculate_damage(target: monster, attack_type:)
     cause_damage(target: monster, damage:)
 
-    puts "#{monster.name}の残りHPは#{monster.hp}だ"
+    attack_message(attack_type:)
   end
 
   private
@@ -17,10 +15,10 @@ class Brave < Character
     attack_num = rand(2)
 
     if attack_num == 0
-      puts "必殺攻撃"
+      # puts "必殺攻撃"
       "special_attack"
     else
-      puts "通常攻撃"
+      # puts "通常攻撃"
       "normal_attack"
     end
   end
@@ -43,7 +41,7 @@ class Brave < Character
     target.hp -= damage
     target.hp = 0 if target.hp < 0
 
-    puts "#{target.name}は#{damage}のダメージを受けた"
+    # puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
   def calculate_special_attack
