@@ -7,11 +7,12 @@ class Monster < Character
 
   def initialize(**params)
     super(
-    name: params[:name],
-    hp: params[:hp],
-    offense: params[:offense],
-    defense: params[:defense],
+      name: params[:name],
+      hp: params[:hp],
+      offense: params[:offense],
+      defense: params[:defense],
     )
+
     @transform_flag = false
     @trigger_of_transform = params[:hp] * CALC_HALF_HP
   end
@@ -24,7 +25,6 @@ class Monster < Character
 
     damage = calculate_damage(brave)
     cause_damage(target: brave, damage:)
-
     attack_message
     damage_message(target: brave, damage:)
   end
@@ -40,12 +40,12 @@ class Monster < Character
     target = params[:target]
 
     target.hp -= damage
-
     target.hp = 0 if target.hp < 0
   end
 
   def transform
     transform_name = "洞窟マムル"
+    transform_message(origin_name: @name, transform_name:)
 
     @offense *= POWER_UP_RATE
     @name = transform_name
